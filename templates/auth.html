@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Authentication - Secure Chat</title>
+        <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+    </head>
+    <body>
+        <div class="auth-container">
+            <div class="auth-box">
+                <h2>Secure Chat</h2>
+
+                <!-- Authentication Type Selector -->
+                <div class="auth-type-selector" id="authTypeSelector">
+                    <button onclick="showLoginForm()" class="selector-btn active" id="loginBtn">Login</button>
+                    <button onclick="showRegisterForm()" class="selector-btn" id="registerBtn">Register</button>
+                </div>
+
+                {% if error %}
+                <div class="error-message">
+                    {{ error }}
+                    {% if error == "User already connected from another device" %}
+                    <br>
+                    <small>To access, please log out from the other device first.</small>
+                    {% endif %}
+                </div>
+                {% endif %}
+
+                {% if success %}
+                <div class="success-message">
+                    {{ success }}
+                </div>
+                {% endif %}
+
+                <!-- Login Form -->
+                <form id="loginForm" method="post" action="/login" class="auth-form">
+                    <div class="form-group">
+                        <label for="login-username">Username:</label>
+                        <input type="text"
+                               id="login-username"
+                               name="username"
+                               required
+                               minlength="3"
+                               maxlength="20"
+                               placeholder="Enter your username">
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password:</label>
+                        <input type="password"
+                               id="login-password"
+                               name="password"
+                               required
+                               minlength="6"
+                               placeholder="Enter your password">
+                    </div>
+                    <div class="auth-buttons">
+                        <button type="submit" class="login-btn">Login</button>
+                    </div>
+                </form>
+
+                <!-- Register Form -->
+                <form id="registerForm" method="post" action="/register" class="auth-form" style="display: none;">
+                    <div class="form-group">
+                        <label for="register-username">Username:</label>
+                        <input type="text"
+                               id="register-username"
+                               name="username"
+                               required
+                               minlength="3"
+                               maxlength="20"
+                               placeholder="Choose a username">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Password:</label>
+                        <input type="password"
+                               id="register-password"
+                               name="password"
+                               required
+                               minlength="6"
+                               placeholder="Choose a password">
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password-confirm">Confirm Password:</label>
+                        <input type="password"
+                               id="register-password-confirm"
+                               name="password_confirm"
+                               required
+                               minlength="6"
+                               placeholder="Confirm your password">
+                    </div>
+                    <div class="auth-buttons">
+                        <button type="submit" class="register-btn">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+    <script src="{{ url_for('static', path='js/auth.js') }}"></script>
+</html>

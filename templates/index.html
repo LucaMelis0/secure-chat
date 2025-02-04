@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Secure Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+</head>
+<body>
+    <div class="welcome-container">
+        <div class="welcome-card">
+            <h1>Secure Chat</h1>
+            <p>Welcome to our secure chat. Here you can join the group chat or start private conversations with other online users. To access the chat, please authenticate.</p>
+            <button onclick="goToAuth()" class="enter-button">Enter Chat</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', path='/js/index.js') }}"></script>
+</body>
+</html>

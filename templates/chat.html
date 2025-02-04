@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
+</head>
+<body class="chat-page">
+    <div class="chat-wrapper">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="header-info">
+                    <div class="user-info">
+                        <div class="user-name-container">
+                            <span class="user-name-label">Welcome,</span>
+                            <span class="user-name">{{ username }}</span>
+                        </div>
+                        <div class="user-status-container">
+                            <span class="status-dot"></span>
+                            <span class="user-status">Online</span>
+                        </div>
+                    </div>
+                </div>
+                <button onclick="window.location.href='/logout'" class="logout-btn" title="Logout">
+                    <span class="logout-icon">⇥</span>
+                    <span class="logout-text">Logout</span>
+                </button>
+            </div>
+
+            <div class="chat-list">
+                <div class="chat-item active" data-chat-id="group" onclick="switchChat('group', 'Group Chat')">
+                    <span class="chat-name">Group Chat</span>
+                    <span class="notification-badge" style="display: none;"></span>
+                </div>
+                <div id="private-chats"></div>
+            </div>
+
+            <div class="online-users">
+                <h3>Online Users</h3>
+                <div id="users-list"></div>
+            </div>
+        </div>
+
+        <div class="chat-area">
+            <div id="current-chat-header">
+                <h2>Group Chat</h2>
+            </div>
+
+            <div class="messages-container">
+                <div id="messages" class="messages"></div>
+            </div>
+
+            <div class="input-area">
+                <input type="text" id="messageText" placeholder="Type a message...">
+                <button onclick="sendMessage()" class="send-button">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', path='/js/chat.js') }}"></script>
+</body>
+</html>
