@@ -9,6 +9,7 @@ This project is built with Python, FastAPI, HTML, and CSS in order to achieve a 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Firewall Configuration (Optional)](#firewall-configuration-optional)
 - [Project Structure](#project-structure)
 - [Dependencies](#dependencies)
 
@@ -82,6 +83,28 @@ After completing the installation steps, start the FastAPI server:
   python main.py
   ```
   The server will run on https://localhost:5000 with SSL enabled. Open the URL in your browser to access the chat application.
+
+### Firewall Configuration (Optional)
+If you plan to allow external devices (like your smartphone) to connect to your server, Windows Firewall might block incoming connections by default.
+To allow connections on port 5000, follow these steps:
+  1. Press **Win + R**, type `wf.msc`, and press Enter.
+  2. Click on **Inbound Rules** in the left pane, and then on New Rule.
+  3. Configure the Rule:
+     - **Rule Type**: Port
+     - **Protocol**: TCP
+     - **Port**: 5000
+     - **Action**: Allow the connection
+     - **Profile**: Choose the appropriate profiles (Domain, Private, Public) based on your network setup. For a home network, typically select Private.
+     - **Name**: The name you want to give to the rule
+
+Once this is done, in order to connect to the server using another device, you need to follow those steps:
+  1. Make sure your device is connected to the same local network of the server.
+  2. Press **Win + R**, type `cmd` and press Enter.
+  3. Type `ipconfig` in the terminal and press Enter.
+  4. Look for the **IPv4 Address** under your active network adapter. This is your local IP address.<br>
+  
+The address you just found is the address you need to connect to with your device.
+For example, if the ip address is 192.168.1.5, you will need to type `https://192.168.1.5:5000` in your browser to connect to the server.
 
 ### Project Structure
   ```
