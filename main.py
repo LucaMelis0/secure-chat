@@ -328,7 +328,7 @@ if __name__ == "__main__":
     # Run the application with Uvicorn
     uvicorn.run(
         "main:app",
-        host="localhost",
+        host="0.0.0.0",
         port=5000,
         ssl_keyfile="key.pem",
         ssl_certfile="cert.pem"
